@@ -111,12 +111,17 @@ class PersonDetails {
 let addressBookArray = new Array();
 
 let fistPerson = new PersonDetails("Vivek", "Gujale", "10-12/21 Shantinagar", "Navi Mumbai", "Maharashtra", "410235", "91 9685654789", "vivek223@gmail.com");
-let secondPerson = new PersonDetails("Sandip", "Kengar", "36-02/15 Gandhinagar", "Pune", "Maharashtra", "425459", "91 9023547852", "sandy25@gmail.com");
+let secondPerson = new PersonDetails("Sandip", "Kengar", "36-02/15 Gandhinagar", "Rajkot", "Gujrat", "425459", "91 9023547852", "sandy25@gmail.com");
 let thirdPerson = new PersonDetails("Sagar", "Kalokhe", "18-20/42 Kantinagar", "Satara", "Maharashtra", "412015", "91 8521456987", "shaggy12@gmail.com");
+let fourthPerson = new PersonDetails("Nilesh", "Choudhary", "10-23/12 Ramnagar", "Jaipur", "Rajasthan", "654035", "91 7563214569", "nilya564@gmail.com");
+let fifthPerson = new PersonDetails("Tabrej", "Shaikh", "05-33/21 Devnagar", "Patna", "Bihar", "212019", "91 8454784561", "tabb12@gmail.com");
 try {
     addressBookArray.push(fistPerson);
     addressBookArray.push(secondPerson);
     addressBookArray.push(thirdPerson);
+    addressBookArray.push(fourthPerson);
+    addressBookArray.push(fifthPerson);
+
 } catch (e) {
     console.error(e);
 }
@@ -201,16 +206,35 @@ function addContact(personDetails) {
         throw "Contact is already present in the Address Book";
 }
 
+//Search person by city
 function searchContactByCity(city) {
     return addressBookArray.filter((contact) => contact.city == city);
 }
 
+console.log("\nSearch Person By City");
+console.log(searchContactByCity("Navi Mumbai"));
+
+//Search person by State
 function searchContactByState(state) {
     return addressBookArray.filter((contact) => contact.state == state);
 }
 
-console.log("\nSearch Contact By City");
-console.log(searchContactByCity("Navi Mumbai"));
-
-console.log("\nSearch Contact By State");
+console.log("\nSearch Person By State");
 console.log(searchContactByState("Maharashtra"));
+
+//View person details by city
+function viewContactsByCity(city) {
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+
+console.log("\nView Person Details By City : Patna \n");
+console.log(viewContactsByCity("Patna"));
+
+//View person details by state
+function viewContactsByState(state) {
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+
+console.log("\nView Person Details By State : Rajasthan \n");
+console.log(viewContactsByState("Rajasthan"));
+
