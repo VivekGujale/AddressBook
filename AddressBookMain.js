@@ -109,11 +109,48 @@ class PersonDetails {
 }
 
 let addressBookArray = new Array();
+
+function contactExists(firstName, lastName) {
+    return addressBookArray.some(personDetails => personDetails.firstName == firstName && personDetails.lastName == lastName);
+}
+
+function editContact(firstName, lastName, type, newData) {
+    if (contactExists(firstName, lastName)) {
+        switch (type) {
+            case "address":
+                addressBookArray.find((personDetails) => personDetails.firstName == firstName).address = newData;
+                break;
+            case "city":
+                addressBookArray.find((personDetails) => personDetails.firstName == firstName).city = newData;
+                break;
+            case "state":
+                addressBookArray.find((personDetails) => personDetails.firstName == firstName).state = newData;
+                break;
+            case "zip":
+                addressBookArray.find((personDetails) => personDetails.firstName == firstName).zip = newData;
+                break;
+            case "phoneNumber":
+                addressBookArray.find((personDetails) => personDetails.firstName == firstName).phoneNumber = newData;
+                break;
+            case "email":
+                addressBookArray.find((personDetails) => personDetails.firstName == firstName).email = newData;
+                break;
+            default:
+                console.log("Enter valid type");
+        }
+    }
+    else {
+        console.log("Contact Does Not Exist");
+    }
+}
 try {
-    addressBookArray.push(new PersonDetails("Vivek", "Gujale", "10-12/21 Shantinagar", "NaviMumbai", "Maharashtra", "410235", "91 9685654789", "vivek223@gmail.com"));
+    addressBookArray.push(new PersonDetails("Vivek", "Gujale", "10-12/21 Shantinagar", "Navi Mumbai", "Maharashtra", "410235", "91 9685654789", "vivek223@gmail.com"));
     addressBookArray.push(new PersonDetails("Sandip", "Kengar", "36-02/15 Gandhinagar", "Pune", "Maharashtra", "425459", "91 9023547852", "sandy25@gmail.com"));
     addressBookArray.push(new PersonDetails("Sagar", "Kalokhe", "18-20/42 Kantinagar", "Satara", "Maharashtra", "412015", "91 8521456987", "shaggy12@gmail.com"));
 } catch (e) {
     console.error(e);
 }
+console.log(addressBookArray);
+console.log("\nAfter Editing Contact")
+editContact("Sandip", "Kengar", "city", "Solapur");
 console.log(addressBookArray);
