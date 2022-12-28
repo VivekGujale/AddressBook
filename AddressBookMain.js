@@ -238,16 +238,30 @@ function viewContactsByState(state) {
 console.log("\nView Person Details By State : Rajasthan \n");
 console.log(viewContactsByState("Rajasthan"));
 
+
 let contactsCityMap = new Map();
 let contactsStateMap = new Map();
 
+//get number of person count by city
 function getCountOfPersonDetailsByCity(city) {
     return addressBookArray.filter((contact) => contact.city == city).length;
 }
 
+//get number of person count by state
 function getCountOfPersonDetailsByState(state) {
     return addressBookArray.filter((contact) => contact.state == state).length;
 }
 
 console.log("\nNumber of Contacts residing in City : Navi Mumbai = " + getCountOfPersonDetailsByCity("Navi Mumbai"));
 console.log("\nNumber of Contacts residing in State : Maharashtra = " + getCountOfPersonDetailsByState("Maharashtra"));
+
+//sorting alphabetically person details by name
+function sortAddressBookByName() {
+    addressBookArray.sort((firstPerson, fourthPerson) => (firstPerson.firstName).localeCompare(fourthPerson.firstName));
+    console.log(addressBookArray);
+}
+
+console.log("\nPerson details are in Alphabetical Order are : ");
+sortAddressBookByName();
+
+
