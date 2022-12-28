@@ -200,3 +200,17 @@ function addContact(personDetails) {
     else
         throw "Contact is already present in the Address Book";
 }
+
+function searchContactByCity(city) {
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+
+function searchContactByState(state) {
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+
+console.log("\nSearch Contact By City");
+console.log(searchContactByCity("Navi Mumbai"));
+
+console.log("\nSearch Contact By State");
+console.log(searchContactByState("Maharashtra"));
