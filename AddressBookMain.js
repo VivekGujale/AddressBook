@@ -110,10 +110,22 @@ class PersonDetails {
 
 let addressBookArray = new Array();
 
+let fistPerson = new PersonDetails("Vivek", "Gujale", "10-12/21 Shantinagar", "Navi Mumbai", "Maharashtra", "410235", "91 9685654789", "vivek223@gmail.com");
+let secondPerson = new PersonDetails("Sandip", "Kengar", "36-02/15 Gandhinagar", "Pune", "Maharashtra", "425459", "91 9023547852", "sandy25@gmail.com");
+let thirdPerson = new PersonDetails("Sagar", "Kalokhe", "18-20/42 Kantinagar", "Satara", "Maharashtra", "412015", "91 8521456987", "shaggy12@gmail.com");
+try {
+    addressBookArray.push(fistPerson);
+    addressBookArray.push(secondPerson);
+    addressBookArray.push(thirdPerson);
+} catch (e) {
+    console.error(e);
+}
+
 function contactExists(firstName, lastName) {
     return addressBookArray.some(personDetails => personDetails.firstName == firstName && personDetails.lastName == lastName);
 }
 
+//Edit person details in address book
 function editContact(firstName, lastName, type, newData) {
     if (contactExists(firstName, lastName)) {
         switch (type) {
@@ -144,6 +156,12 @@ function editContact(firstName, lastName, type, newData) {
     }
 }
 
+console.log(addressBookArray);
+console.log("\nAfter Editing Contact")
+editContact("Sandip", "Kengar", "city", "Solapur");
+console.log(addressBookArray);
+
+//Delete person from address book
 function deleteContact(firstName, lastName) {
     if (contactExists(firstName, lastName)) {
         addressBookArray = addressBookArray.filter((contact) => contact.firstName != firstName && contact.lastName != lastName);
@@ -152,25 +170,33 @@ function deleteContact(firstName, lastName) {
     }
 }
 
-try {
-    addressBookArray.push(new PersonDetails("Vivek", "Gujale", "10-12/21 Shantinagar", "Navi Mumbai", "Maharashtra", "410235", "91 9685654789", "vivek223@gmail.com"));
-    addressBookArray.push(new PersonDetails("Sandip", "Kengar", "36-02/15 Gandhinagar", "Pune", "Maharashtra", "425459", "91 9023547852", "sandy25@gmail.com"));
-    addressBookArray.push(new PersonDetails("Sagar", "Kalokhe", "18-20/42 Kantinagar", "Satara", "Maharashtra", "412015", "91 8521456987", "shaggy12@gmail.com"));
-} catch (e) {
-    console.error(e);
-}
-console.log(addressBookArray);
-console.log("\nAfter Editing Contact")
-editContact("Sandip", "Kengar", "city", "Solapur");
-console.log(addressBookArray);
-
 console.log("\nAfter Deleting Contact");
 deleteContact("Sagar", "Kalokhe");
 console.log(addressBookArray);
 
+
+//Checking count of person's available in address book
 function getCountOfPerson(count) {
     count += 1;
     return count;
 }
 
 console.log("\nCount of Contacts : " + addressBookArray.reduce(getCountOfPerson, 0));
+
+
+//checking for duplicate person entry
+console.log("\nCheck Duplicate Person Entry");
+try {
+    addContact(secondPerson);
+} catch (e) {
+    console.error(e);
+}
+console.log(addressBookArray);
+
+//if there is no duplicate entry then adding person details in address book
+function addContact(personDetails) {
+    if (!contactExists(personDetails.firstName, personDetails.lastName))
+        addressBookArray.push(personDetails);
+    else
+        throw "Contact is already present in the Address Book";
+}
