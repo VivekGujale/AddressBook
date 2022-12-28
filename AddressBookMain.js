@@ -167,3 +167,10 @@ console.log(addressBookArray);
 console.log("\nAfter Deleting Contact");
 deleteContact("Sagar", "Kalokhe");
 console.log(addressBookArray);
+
+function getCountOfPerson(count) {
+    count += 1;
+    return count;
+}
+
+console.log("\nCount of Contacts : " + addressBookArray.reduce(getCountOfPerson, 0));
