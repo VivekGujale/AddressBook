@@ -264,4 +264,30 @@ function sortAddressBookByName() {
 console.log("\nPerson details are in Alphabetical Order are : ");
 sortAddressBookByName();
 
+//sort the entries by city
+function sortByCity() {
+    addressBookArray.sort((firstPerson, secondPerson) => (firstPerson.city).localeCompare(secondPerson.city));
+    console.log(addressBookArray);
+}
 
+console.log("\nContacts Sorted By City");
+sortByCity();
+
+//sort the entries by state
+function sortByState() {
+    addressBookArray.sort((firstPerson, fifthPerson) => (firstPerson.state).localeCompare(fifthPerson.state));
+    console.log(addressBookArray);
+}
+
+console.log("\nContacts Sorted By State");
+sortByState();
+
+
+//sort the entries by zip code
+function sortByZip() {
+    addressBookArray.sort((firstPerson, fourthPerson) => (firstPerson.zip).localeCompare(fourthPerson.zip));
+    console.log(addressBookArray);
+}
+
+console.log("\nContacts Sorted By Zip");
+sortByZip();
